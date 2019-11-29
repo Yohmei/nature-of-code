@@ -1,0 +1,74 @@
+.navigation {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  @include media('<ipad') {
+    font-size: 5em;
+    top: unset;
+    bottom: 25px;
+  }
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 6em;
+  background-color: $bg;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  a:link {
+    font-family: $h_font;
+    text-transform: uppercase;
+    letter-spacing: 20px;
+    display: block;
+    width: max-content;
+    overflow: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      bottom: 0;
+      right: -1%;
+      width: 80%;
+      height: 20%;
+      @include mid(bottom, 100%, 60%);
+      background: $focus;
+      transform: translateX(100%);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover {
+      text-decoration: none;
+      color: $font;
+
+      &:before {
+        transform: translateX(-13%);
+      }
+    }
+  }
+
+  @include media('<ipad') {
+    font-size: 3em;
+
+    a {
+      letter-spacing: 10px;
+    }
+  }
+}

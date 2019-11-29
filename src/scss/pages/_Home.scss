@@ -1,0 +1,16 @@
+.Home {
+  overflow: hidden;
+
+  main {
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+
+    h1 {
+      font-size: 5em;
+      font-family: $serif_font;
+      z-index: 2;
+      letter-spacing: 1rem;
+    }
+  }
+}

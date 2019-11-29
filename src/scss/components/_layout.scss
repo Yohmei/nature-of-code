@@ -1,0 +1,76 @@
+/* -------------------------------------------------------------------
+ * ## layout
+ * ------------------------------------------------------------------- */
+#root {
+  height: 100%;
+
+  .app {
+    height: 100%;
+    background-color: $bg;
+    position: relative;
+
+    .page-wrapper {
+      height: 80%;
+      padding: 10px;
+    }
+  }
+}
+
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    max-width: $max-width;
+    margin: 0 auto;
+    overflow-y: scroll;
+  }
+}
+
+.header {
+  text-align: center;
+  height: 10%;
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+  width: 100vw;
+  height: 100vh;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* simple - enter transition 300ms, exit 150ms */
+.fade-appear,
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms linear 150ms; // 450ms in total is the transition duration
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0;
+  transition: opacity 150ms linear;
+}
