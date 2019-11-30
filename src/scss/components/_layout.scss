@@ -33,6 +33,18 @@
   height: 10%;
 }
 
+.canvas-page {
+  main {
+    width: 100%;
+    height: 100%;
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
 .fullscreen-bg {
   position: fixed;
   top: 0;
