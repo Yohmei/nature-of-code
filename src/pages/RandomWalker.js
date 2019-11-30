@@ -10,12 +10,13 @@ const animate = args => {
   const { graph_obj, walker } = args
 
   // A condition to stop the animation
-  if (true) args.stop_anime = true
+  if (walker.x == 100) args.stop_anime = true
 
   // Redraw Graph every frame
   graph_obj.draw_graph()
 
   // Animation here
+  walker.step_tend_right()
   walker.display()
 }
 
