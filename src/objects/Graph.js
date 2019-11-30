@@ -19,8 +19,8 @@ export default class Graph {
 
   draw_line_y() {
     this.context.beginPath()
-    this.context.moveTo(2, -this.y0)
-    this.context.lineTo(2, this.y0)
+    this.context.moveTo(0, -this.y0)
+    this.context.lineTo(0, this.y0)
     this.context.stroke()
   }
 
@@ -32,6 +32,6 @@ export default class Graph {
     // Draw the graph
     this.draw_line_x()
     this.draw_line_y()
-    this.context.fillText('0', -10, 16)
+    this.context.fillText('0', -12, 16)
   }
 }

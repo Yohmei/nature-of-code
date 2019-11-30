@@ -5,7 +5,7 @@ import express from 'express'
 import { renderToString } from 'react-dom/server'
 import body_parser from 'body-parser'
 
-import doc_load_css from './doc_load/doc_load.css'
+import doc_load_css from './styles/doc_load.css'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 

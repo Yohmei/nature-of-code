@@ -13,7 +13,7 @@ export default class Canvas {
 
     this.context.clearRect(-this.x0, -this.y0, this.width, this.height)
 
-    animate(args, this)
+    animate(args)
 
     if (!stop_anime)
       window.requestAnimationFrame(_ => {
