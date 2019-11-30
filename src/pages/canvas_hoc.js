@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 function page_hoc(Page, animate, draw) {
   // ...and returns another component...
   return class extends Component {
-    canvas = React.createRef()
+    canvas_el = React.createRef()
 
     constructor(props) {
       super(props)
@@ -12,13 +12,13 @@ function page_hoc(Page, animate, draw) {
     }
 
     componentDidMount() {
-      const c = this.canvas.current
-      window.addEventListener('resize', () => this.draw(c, this))
-      this.draw(c, this)
+      const canvas_el = this.canvas_el.current
+      window.addEventListener('resize', () => this.draw(canvas_el, this.animate))
+      this.draw(canvas_el, this.animate)
     }
 
     componentWillUnmount = () => {
-      window.removeEventListener('resize', () => this.draw(this.canvas.current, this))
+      window.removeEventListener('resize', () => this.draw(this.canvas_el.current, this.animate))
     }
 
     render() {
@@ -26,7 +26,7 @@ function page_hoc(Page, animate, draw) {
       // Notice that we pass through any additional props
       return (
         <div className={`${Page.name} page canvas-page`}>
-          <Page canvas={this.canvas} {...this.props} />
+          <Page canvas_el={this.canvas_el} {...this.props} />
         </div>
       )
     }
