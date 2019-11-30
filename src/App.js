@@ -12,7 +12,11 @@ export default class App extends Component {
   render() {
     return (
       <div className='app'>
-        <header className='header'></header>
+        <header className='header'>
+          <div className='img-chest'>
+            <div className='line'></div>
+          </div>
+        </header>
         <Route
           render={({ location }) => (
             <TransitionGroup className='page-wrapper'>

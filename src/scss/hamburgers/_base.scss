@@ -17,6 +17,10 @@
   margin: 0;
   overflow: visible;
 
+  .hamburger-inner {
+    background-color: $bg;
+  }
+
   &:hover {
     @if $hamburger-hover-use-filter == true {
       filter: $hamburger-hover-filter;

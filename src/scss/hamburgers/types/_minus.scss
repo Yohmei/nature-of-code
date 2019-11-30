@@ -12,9 +12,10 @@
 
     &.is-active {
       .hamburger-inner {
+        background-color: $bg;
         &::before,
         &::after {
-          opacity: 0;
+          opacity: 1;
           transition: bottom 0.2s ease-out, top 0.2s ease-out, opacity 0s 0.2s linear;
         }
         &::before {
