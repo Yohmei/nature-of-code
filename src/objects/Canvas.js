@@ -11,7 +11,7 @@ export default class Canvas {
   update = args => {
     const { stop_anime, animate } = args
 
-    this.context.clearRect(-this.x0, -this.y0, this.width, this.height)
+    // this.context.clearRect(-this.x0, -this.y0, this.width, this.height)
 
     animate(args)
 
