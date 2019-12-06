@@ -42,6 +42,8 @@
     justify-content: center;
 
     .line {
+      position: relative;
+      z-index: 11;
       content: '';
       background-color: $font;
       width: 4px;

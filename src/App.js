@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
+import Ham from './components/Ham'
 import Home from './pages/Home'
 import RandomWalker from './pages/RandomWalker'
-import Ham from './components/Ham'
+import NormalDistribution from './pages/NormalDistribution'
 
 import './scss/styles.scss'
 
@@ -25,6 +26,7 @@ export default class App extends Component {
                 <Switch location={location}>
                   <Route exact path='/' component={Home} />
                   <Route exact path='/random-walker' render={props => <RandomWalker {...props} />} />
+                  <Route exact path='/normal-distribution' component={NormalDistribution} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

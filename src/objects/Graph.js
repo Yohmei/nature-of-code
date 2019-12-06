@@ -5,7 +5,7 @@ export default class Graph {
     this.height = canvas_obj.height
     this.x0 = canvas_obj.x0 // a point 'x' coordinate a circle moves around
     this.y0 = canvas_obj.y0 // a point 'y' coordinate a circle moves around
-    this.context.fillStyle = '#000'
+    this.context.fillStyle = 'rgba(0, 0, 0, 1)'
     this.context.strokeStyle = '#000'
     this.context.font = '14px Open Sans'
   }
