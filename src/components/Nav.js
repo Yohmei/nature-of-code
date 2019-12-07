@@ -8,7 +8,7 @@ export default class Nav extends Component {
   }
 
   state = {
-    pages: ['Home', 'Random Walker', 'Normal Distribution']
+    pages: ['Home', 'Random Walker', 'Normal Distribution', 'Perlin Noise']
   }
 
   nav = React.createRef()

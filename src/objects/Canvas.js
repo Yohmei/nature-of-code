@@ -9,15 +9,33 @@ export default class Canvas {
   }
 
   update = args => {
-    const { stop_anime, animate } = args
+    const { stop_anime, graph_obj, animate } = args
 
-    // this.context.clearRect(-this.x0, -this.y0, this.width, this.height)
+    this.context.clearRect(-this.x0, -this.y0, this.width, this.height)
+
+    graph_obj.draw_graph()
 
     animate(args)
 
     if (!stop_anime)
       window.requestAnimationFrame(_ => {
         return this.update(args)
+      })
+  }
+
+  update_no_clear = args => {
+    const { stop_anime, graph_obj, animate, is_draw_graph } = args
+
+    if (is_draw_graph) {
+      graph_obj.draw_graph()
+      args.is_draw_graph = false
+    }
+
+    animate(args)
+
+    if (!stop_anime)
+      window.requestAnimationFrame(_ => {
+        return this.update_no_clear(args)
       })
   }
 }

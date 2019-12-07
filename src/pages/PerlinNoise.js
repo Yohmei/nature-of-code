@@ -4,37 +4,39 @@ import PropTypes from 'prop-types'
 import Canvas from '../objects/Canvas'
 import Graph from '../objects/Graph'
 import canvas_hoc from './canvas_hoc'
-import Walker from '../objects/Walker'
+
+import { gaussian_random } from '../objects/_utils'
 
 const animate = args => {
-  const { walker } = args
+  const { graph_obj } = args
 
   // A condition to stop the animation
-  if (walker.x == 100) args.stop_anime = true
+  if (true) args.stop_anime = true
 
   // Animation here
-  walker.step_tend_right()
-  walker.display()
+  graph_obj.context.beginPath()
+  graph_obj.context.arc(0, 0, 2, 0, 2 * Math.PI)
+  graph_obj.context.fill()
+  args.counter += 1
 }
 
 const draw = (canvas_el, animate) => {
   setTimeout(() => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
-    const walker = new Walker(canvas_obj)
 
     graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, walker, animate })
+    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, counter: 0, is_draw_graph: true })
   }, 100)
 }
 
-class RandomWalker extends Component {
+class PerlinNoise extends Component {
   static propTypes = {
     canvas_el: PropTypes.object
   }
 
-  name = RandomWalker
+  name = PerlinNoise
 
   render() {
     const { canvas_el } = this.props
@@ -46,4 +48,4 @@ class RandomWalker extends Component {
   }
 }
 
-export default canvas_hoc(RandomWalker, animate, draw)
+export default canvas_hoc(PerlinNoise, animate, draw)
