@@ -5,7 +5,7 @@ import Canvas from '../objects/Canvas'
 import Graph from '../objects/Graph'
 import canvas_hoc from './canvas_hoc'
 
-import { ClassicalNoise } from '../objects/_utils'
+import { noise } from '../objects/_utils'
 
 const animate = args => {
   const { graph_obj } = args
@@ -25,7 +25,7 @@ const draw = (canvas_el, animate) => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
 
-    console.log(new ClassicalNoise().noise(0.2, 0, 0))
+    console.log(noise(0.1))
 
     graph_obj.translate_coordinates()
 
