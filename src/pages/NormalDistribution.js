@@ -32,7 +32,7 @@ const draw = (canvas_el, animate) => {
 
     graph_obj.translate_coordinates()
 
-    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, gaussian, time: 0, is_draw_graph: true })
+    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, is_draw_graph: true, gaussian, time: 0 })
   }, 100)
 }
 

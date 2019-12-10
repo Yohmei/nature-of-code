@@ -12,19 +12,15 @@ const animate = args => {
   const { graph_obj, perlin, time } = args
 
   // A condition to stop the animation
-  if (time > 10) args.stop_anime = true
+  if (time > 20) args.stop_anime = true
 
-  const n = perlin.noise(time)
-
-  console.log(n)
-
-  let y = map_range(perlin.noise(time), 0, 1, 0, 100)
+  let y = map_range(perlin.noise(time), 0, 1, 0, 30)
 
   // Animation here
   graph_obj.context.beginPath()
-  graph_obj.context.arc(time, -y, 2, 0, 2 * Math.PI)
+  graph_obj.context.arc(time * 10, -y, 1, 0, 2 * Math.PI)
   graph_obj.context.fill()
-  args.time += 1
+  args.time += 0.1
 }
 
 const draw = (canvas_el, animate) => {
@@ -35,7 +31,7 @@ const draw = (canvas_el, animate) => {
 
     graph_obj.translate_coordinates()
 
-    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, perlin, time: 0, is_draw_graph: true })
+    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, is_draw_graph: true, perlin, time: 0 })
   }, 100)
 }
 

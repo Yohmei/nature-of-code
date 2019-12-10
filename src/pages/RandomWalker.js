@@ -25,7 +25,7 @@ const draw = (canvas_el, animate) => {
 
     graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, walker, animate })
+    canvas_obj.update({ stop_anime: false, graph_obj, animate, walker })
   }, 100)
 }
 
