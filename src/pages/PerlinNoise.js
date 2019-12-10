@@ -7,6 +7,8 @@ import canvas_hoc from './canvas_hoc'
 
 import { noise } from '../objects/_utils'
 
+import toxi from 'toxiclibsjs'
+
 const animate = args => {
   const { graph_obj } = args
 
@@ -24,8 +26,9 @@ const draw = (canvas_el, animate) => {
   setTimeout(() => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
+    const perlin = new toxi.math.noise.PerlinNoise()
 
-    console.log(noise(0.1))
+    console.log(perlin.noise(1))
 
     graph_obj.translate_coordinates()
 
