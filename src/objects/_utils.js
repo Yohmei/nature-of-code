@@ -1,15 +1,56 @@
-export const random = n => {
-  return Math.floor(Math.random() * n)
+export const random = (min, max) => {
+  const rand = Math.random()
+
+  if (typeof min === 'undefined') {
+    return rand
+  } else if (typeof max === 'undefined') {
+    if (min instanceof Array) {
+      return min[Math.floor(rand * min.length)]
+    } else {
+      return rand * min
+    }
+  } else {
+    if (min > max) {
+      var tmp = min
+      min = max
+      max = tmp
+    }
+
+    return rand * (max - min) + min
+  }
 }
 
-export const gaussian_random = () => {
-  let u = 0
-  let v = 0
+export class Gaussian {
+  _gaussian_previous = false
 
-  while (u === 0) u = Math.random() // Converting [0,1) to (0,1)
-  while (v === 0) v = Math.random()
+  random = (mean, sd) => {
+    let y1, y2, x1, x2, w
 
-  return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v)
+    if (this._gaussian_previous) {
+      y1 = y2
+      this._gaussian_previous = false
+    } else {
+      do {
+        x1 = random(2) - 1
+        x2 = random(2) - 1
+
+        w = x1 * x1 + x2 * x2
+      } while (w >= 1)
+
+      w = Math.sqrt((-2 * Math.log(w)) / w)
+      y1 = x1 * w
+      y2 = x2 * w
+
+      this._gaussian_previous = true
+    }
+
+    let m = mean || 0
+    let s = sd || 1
+
+    return y1 * s + m
+  }
 }
 
-export const noise = x => {}
+export const map_range = (value, curr_min, curr_max, new_min, new_max) => {
+  return new_min + ((new_max - new_min) * (value - curr_min)) / (curr_max - curr_min)
+}

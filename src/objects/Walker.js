@@ -21,8 +21,8 @@ export default class Walker {
 
   step_9_directions = _ => {
     // 8 directional step and the possibility to stay in place = 9 possibilities
-    const step_x = random(3) - 1
-    const step_y = random(3) - 1
+    const step_x = Math.floor(random(3)) - 1
+    const step_y = Math.floor(random(3)) - 1
 
     this.x += step_x
     this.y += step_y
