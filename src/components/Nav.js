@@ -20,7 +20,7 @@ export default class Nav extends Component {
     return (
       <nav onClick={toggle_burger} ref={this.nav}>
         {pages.map((page, index) => {
-          const page_link = page.toLowerCase().replace(' ', '-')
+          const page_link = page.toLowerCase().replace(/\s/g, '-')
 
           return (
             <div key={index}>

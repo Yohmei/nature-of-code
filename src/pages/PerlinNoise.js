@@ -27,6 +27,8 @@ const draw = (canvas_el, animate) => {
   setTimeout(() => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
+
+    // Explore Perlin Noise http://haptic-data.com/toxiclibsjs/examples/perlin-noise-canvas
     const perlin = new toxi.math.noise.PerlinNoise()
 
     graph_obj.translate_coordinates()
