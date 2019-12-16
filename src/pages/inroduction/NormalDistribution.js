@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Canvas from '../objects/Canvas'
-import Graph from '../objects/Graph'
-import canvas_hoc from './canvas_hoc'
+import Canvas from '../../objects/Canvas'
+import Graph from '../../objects/Graph'
+import canvas_hoc from '../canvas_hoc'
 
-import { Gaussian } from '../objects/_utils'
+import { Gaussian } from '../../objects/_utils'
 
 const animate = args => {
   const { graph_obj, gaussian, time } = args

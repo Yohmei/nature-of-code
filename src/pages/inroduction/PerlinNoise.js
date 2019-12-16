@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import toxi from 'toxiclibsjs'
 
-import Canvas from '../objects/Canvas'
-import Graph from '../objects/Graph'
-import canvas_hoc from './canvas_hoc'
+import Canvas from '../../objects/Canvas'
+import Graph from '../../objects/Graph'
+import canvas_hoc from '../canvas_hoc'
 
-import { map_range } from '../objects/_utils'
+import { map_range } from '../../objects/_utils'
 
 const animate = args => {
   const { graph_obj, perlin, time } = args

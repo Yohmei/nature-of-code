@@ -6,9 +6,10 @@ import './scss/styles.scss'
 
 import Ham from './components/Ham'
 import Home from './pages/Home'
-import RandomWalker from './pages/RandomWalker'
-import NormalDistribution from './pages/NormalDistribution'
-import PerlinNoise from './pages/PerlinNoise'
+import RandomWalker from './pages/inroduction/RandomWalker'
+import NormalDistribution from './pages/inroduction/NormalDistribution'
+import PerlinNoise from './pages/inroduction/PerlinNoise'
+import Vectors from './pages/vectors/Vectors'
 
 export default class App extends Component {
   render() {
@@ -26,9 +27,12 @@ export default class App extends Component {
               <CSSTransition key={location.key} timeout={0} classNames='fade-commented'>
                 <Switch location={location}>
                   <Route exact path='/' component={Home} />
-                  <Route exact path='/random-walker' render={props => <RandomWalker {...props} />} />
+                  {/* Introduction */}
+                  <Route exact path='/random-walker' component={RandomWalker} />
                   <Route exact path='/normal-distribution' component={NormalDistribution} />
                   <Route exact path='/perlin-noise' component={PerlinNoise} />
+                  {/* Vectors */}
+                  <Route exact path='/vectors' component={Vectors} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>
