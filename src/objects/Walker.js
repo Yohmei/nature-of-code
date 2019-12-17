@@ -4,13 +4,13 @@ export default class Walker {
   constructor(canvas_obj) {
     this.x = 0
     this.y = 0
-    this.radius = 2
     this.context = canvas_obj.context
     this.context.fillStyle = '#000'
   }
 
   display = _ => {
-    const { x, y, radius, context } = this
+    const { x, y, context } = this
+    const radius = 2
     const start_angle = 0
     const end_angle = Math.PI * 2
 
@@ -21,8 +21,9 @@ export default class Walker {
 
   step_9_directions = _ => {
     // 8 directional step and the possibility to stay in place = 9 possibilities
-    const step_x = Math.floor(random(3)) - 1
-    const step_y = Math.floor(random(3)) - 1
+    const step_x = Math.floor(random(3)) - 1 // 3 ways to go horizontally
+    const step_y = Math.floor(random(3)) - 1 // 3 ways vertically
+    // 3 * 3 = 9
 
     this.x += step_x
     this.y += step_y

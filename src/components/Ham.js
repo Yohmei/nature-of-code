@@ -23,6 +23,12 @@ class Ham extends Component {
     }
   }
 
+  componentDidMount() {
+    document.onkeydown = event => {
+      if (event.which == 32) this.burger.current.click()
+    }
+  }
+
   render() {
     const { active_nav } = this.state
     return (
