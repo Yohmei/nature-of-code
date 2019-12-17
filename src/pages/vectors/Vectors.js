@@ -8,12 +8,14 @@ import Renderer from '../../objects/Renderer'
 import PVector from '../../objects/PVector'
 
 const animate = args => {
-  const { renderer } = args
+  const { renderer, location, velocity } = args
 
   // A condition to stop the animation
-  if (renderer.x == 100) args.stop_anime = true
+  if (location.x > 200) args.stop_anime = true
 
   // Animation here
+  location.add(velocity)
+  renderer.vector = location
   renderer.draw_circle()
 }
 
@@ -22,12 +24,12 @@ const draw = (canvas_el, animate) => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
     const location = new PVector(0, 0)
-    const velocity = new PVector(1, 3)
+    const velocity = new PVector(10, -3)
     const renderer = new Renderer(canvas_obj, location)
 
     graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, animate, renderer })
+    canvas_obj.update({ stop_anime: false, graph_obj, animate, renderer, location, velocity })
   }, 100)
 }
 

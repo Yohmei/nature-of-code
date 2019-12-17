@@ -16,4 +16,8 @@ export default class Renderer {
     context.arc(x, y, radius, start_angle, end_angle) // x and y is a center
     context.fill()
   }
+
+  log = content => {
+    this.context.fillText(content, 400, -200)
+  }
 }

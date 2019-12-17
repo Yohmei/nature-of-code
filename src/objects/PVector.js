@@ -3,4 +3,9 @@ export default class PVector {
     this.x = x
     this.y = y
   }
+
+  add(vector) {
+    this.x = this.x + vector.x
+    this.y = this.y + vector.y
+  }
 }
