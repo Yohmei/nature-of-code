@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Canvas from '../../objects/Canvas'
 import Graph from '../../objects/Graph'
-import canvas_hoc from '../canvas_hoc'
+import canvas_hoc from '../../components/canvas_hoc'
 import Walker from '../../objects/Walker'
 
 const animate = args => {

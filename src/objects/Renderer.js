@@ -17,6 +17,15 @@ export default class Renderer {
     context.fill()
   }
 
+  draw_line = (x0, y0) => {
+    const { context } = this
+    const { x, y } = this.vector
+    context.beginPath()
+    context.moveTo(x0, y0)
+    context.lineTo(x, y)
+    context.stroke()
+  }
+
   log = content => {
     this.context.fillText(content, 400, -200)
   }

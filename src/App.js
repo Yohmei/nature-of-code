@@ -10,6 +10,7 @@ import RandomWalker from './pages/inroduction/RandomWalker'
 import NormalDistribution from './pages/inroduction/NormalDistribution'
 import PerlinNoise from './pages/inroduction/PerlinNoise'
 import Vectors from './pages/vectors/Vectors'
+import UnitVectors from './pages/vectors/UnitVectors'
 
 export default class App extends Component {
   render() {
@@ -33,6 +34,7 @@ export default class App extends Component {
                   <Route exact path='/perlin-noise' component={PerlinNoise} />
                   {/* Vectors */}
                   <Route exact path='/vectors' component={Vectors} />
+                  <Route exact path='/unit-vectors' component={UnitVectors} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

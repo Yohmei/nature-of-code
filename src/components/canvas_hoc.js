@@ -7,8 +7,16 @@ function page_hoc(Page, animate, draw) {
 
     constructor(props) {
       super(props)
-      this.animate = animate
-      this.draw = draw
+      this.animate = animate.bind(this)
+      this.draw = draw.bind(this)
+    }
+
+    mouse_x = 100
+    mouse_y = -100
+
+    handle_mouse_move = event => {
+      this.mouse_x = event.clientX
+      this.mouse_y = event.clientY
     }
 
     componentDidMount() {

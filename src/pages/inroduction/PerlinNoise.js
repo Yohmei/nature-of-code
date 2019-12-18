@@ -4,7 +4,7 @@ import toxi from 'toxiclibsjs'
 
 import Canvas from '../../objects/Canvas'
 import Graph from '../../objects/Graph'
-import canvas_hoc from '../canvas_hoc'
+import canvas_hoc from '../../components/canvas_hoc'
 
 import { map_range } from '../../objects/_utils'
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Canvas from '../../objects/Canvas'
 import Graph from '../../objects/Graph'
-import canvas_hoc from '../canvas_hoc'
+import canvas_hoc from '../../components/canvas_hoc'
 import Renderer from '../../objects/Renderer'
 import PVector from '../../objects/PVector'
 
@@ -11,12 +11,30 @@ const animate = args => {
   const { renderer, location, velocity } = args
 
   // A condition to stop the animation
-  if (location.x > 200) args.stop_anime = true
+  if (args.time == 10) args.stop_anime = true
 
   // Animation here
   location.add(velocity)
+
+  if (location.x > 200 || location.x < -200) {
+    velocity.x = velocity.x * -1
+  }
+  if (location.y > 200 || location.y < -200) {
+    velocity.y = velocity.y * -1
+  }
+
   renderer.vector = location
+
   renderer.draw_circle()
+  renderer.draw_line(0, 0)
+
+  renderer.log(`
+  Vector magnitude = ${location.magnitude()};
+  x = ${location.x};
+  y = ${location.y}
+  `)
+
+  args.time++
 }
 
 const draw = (canvas_el, animate) => {
@@ -24,12 +42,12 @@ const draw = (canvas_el, animate) => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
     const location = new PVector(0, 0)
-    const velocity = new PVector(10, -3)
+    const velocity = new PVector(6, -8)
     const renderer = new Renderer(canvas_obj, location)
 
     graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, animate, renderer, location, velocity })
+    canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, renderer, location, velocity })
   }, 100)
 }
 
