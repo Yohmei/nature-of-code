@@ -7,16 +7,23 @@ import canvas_hoc from '../../components/canvas_hoc'
 import Renderer from '../../objects/Renderer'
 import PVector from '../../objects/PVector'
 
+const mouse = new PVector(0, 0)
+
 const animate = function(args) {
   const { renderer } = args
 
   // A condition to stop the animation
-  if (true) args.stop_anime = true
+  if (false) args.stop_anime = true
 
   // Animation here
 
+  const { x, y } = mouse
+
   const start = new PVector(0, 0)
-  const end = new PVector(100, -100)
+  const end = new PVector(x, y)
+
+  end.unit_vector()
+  end.multiply_scalar(100)
 
   renderer.draw_line(start, end)
 
@@ -44,12 +51,11 @@ class UnitVectors extends Component {
 
   name = UnitVectors
 
-  mouse_x = 100
-  mouse_y = -100
-
   handle_mouse_move = event => {
-    this.mouse_x = event.clientX
-    this.mouse_y = event.clientY
+    const { canvas_el } = this.props
+    mouse.x = event.clientX
+    mouse.y = event.clientY
+    mouse.subtract({ x: window.innerWidth / 2, y: window.innerHeight / 2 })
   }
 
   render() {
