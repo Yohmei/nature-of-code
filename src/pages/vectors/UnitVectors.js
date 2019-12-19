@@ -15,22 +15,20 @@ const animate = function(args) {
 
   // Animation here
 
-  const mouse = new PVector(mouse_x, mouse_y)
-  renderer.vector = mouse
+  const start = new PVector(0, 0)
+  const end = new PVector(100, -100)
 
-  renderer.draw_line(0, 0)
+  renderer.draw_line(start, end)
 
   args.time++
 }
 
 // It is important to keep 'function' keyword here because I want to get reference to 'this' inside it
 const draw = function(canvas_el, animate) {
-  const { mouse_x, mouse_y } = this
   setTimeout(() => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
-    const mouse = new PVector(mouse_x, mouse_y)
-    const renderer = new Renderer(canvas_obj, mouse)
+    const renderer = new Renderer(canvas_obj)
 
     graph_obj.translate_coordinates()
 
@@ -40,16 +38,25 @@ const draw = function(canvas_el, animate) {
 
 class UnitVectors extends Component {
   static propTypes = {
-    canvas_el: PropTypes.object
+    canvas_el: PropTypes.object,
+    handle_mouse_move: PropTypes.func
   }
 
   name = UnitVectors
 
+  mouse_x = 100
+  mouse_y = -100
+
+  handle_mouse_move = event => {
+    this.mouse_x = event.clientX
+    this.mouse_y = event.clientY
+  }
+
   render() {
-    const { canvas_el, handle_mouse_move } = this.props
+    const { canvas_el } = this.props
     return (
       <main>
-        <canvas ref={canvas_el} id='canvas' onMouseMove={handle_mouse_move} />
+        <canvas ref={canvas_el} id='canvas' onMouseMove={this.handle_mouse_move} />
       </main>
     )
   }

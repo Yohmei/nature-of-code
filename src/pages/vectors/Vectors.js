@@ -23,10 +23,8 @@ const animate = args => {
     velocity.y = velocity.y * -1
   }
 
-  renderer.vector = location
-
-  renderer.draw_circle()
-  renderer.draw_line(0, 0)
+  renderer.draw_circle(location)
+  renderer.draw_line({ x: 0, y: 0 }, location)
 
   renderer.log(`
   Vector magnitude = ${location.magnitude()};

@@ -1,11 +1,10 @@
 export default class Renderer {
-  constructor(canvas_obj, vector) {
-    this.vector = vector
+  constructor(canvas_obj) {
     this.context = canvas_obj.context
   }
 
-  draw_circle = _ => {
-    const { vector, context } = this
+  draw_circle = vector => {
+    const { context } = this
     const x = vector.x
     const y = vector.y
     const radius = 2
@@ -17,9 +16,13 @@ export default class Renderer {
     context.fill()
   }
 
-  draw_line = (x0, y0) => {
+  draw_line = (start_vector, end_vector) => {
     const { context } = this
-    const { x, y } = this.vector
+    const x0 = start_vector.x
+    const y0 = start_vector.y
+    const x = end_vector.x
+    const y = end_vector.y
+
     context.beginPath()
     context.moveTo(x0, y0)
     context.lineTo(x, y)

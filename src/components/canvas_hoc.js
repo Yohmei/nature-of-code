@@ -11,14 +11,6 @@ function page_hoc(Page, animate, draw) {
       this.draw = draw.bind(this)
     }
 
-    mouse_x = 100
-    mouse_y = -100
-
-    handle_mouse_move = event => {
-      this.mouse_x = event.clientX
-      this.mouse_y = event.clientY
-    }
-
     componentDidMount() {
       const canvas_el = this.canvas_el.current
       window.addEventListener('resize', () => this.draw(canvas_el, this.animate))
