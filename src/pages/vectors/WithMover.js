@@ -5,6 +5,7 @@ import Canvas from '../../classes/Canvas'
 import Graph from '../../classes/Graph'
 import canvas_hoc from '../../components/canvas_hoc'
 import Mover from '../../classes/Mover'
+import Renderer from '../../classes/Renderer'
 
 /**
  *
@@ -20,6 +21,7 @@ const animate = args => {
   if (args.time == 500) args.stop_anime = true
 
   // Animation here
+  mover.renderer.draw_rectangle()
   mover.update()
   mover.display()
   mover.check_edges()

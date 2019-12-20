@@ -21,10 +21,10 @@ export default class Mover {
   check_edges = () => {
     const { location } = this
 
-    if (location.x > 100) this.location.x = 0
-    else if (location.x < 0) this.location.x = 100
+    if (location.x > 100) this.location.x = -100
+    else if (location.x < -100) this.location.x = 100
 
-    if (location.y > 100) this.location.y = 0
-    else if (location.y < 0) this.location.y = 100
+    if (location.y > 100) this.location.y = -100
+    else if (location.y < -100) this.location.y = 100
   }
 }

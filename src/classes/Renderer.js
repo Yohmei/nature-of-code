@@ -1,6 +1,7 @@
 export default class Renderer {
   constructor(canvas_obj) {
     this.context = canvas_obj.context
+    this.strokeStyle = '#000'
   }
 
   draw_circle = vector => {
@@ -27,6 +28,16 @@ export default class Renderer {
     context.moveTo(x0, y0)
     context.lineTo(x, y)
     context.stroke()
+  }
+
+  draw_rectangle = ({ x = -100, y = -100, width = 200, height = 200 } = {}) => {
+    const { context } = this
+
+    context.beginPath()
+    context.strokeStyle = this.strokeStyle
+    context.rect(x, y, width, height)
+    context.stroke()
+    context.closePath()
   }
 
   log = content => {

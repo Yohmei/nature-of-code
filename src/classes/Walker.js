@@ -5,7 +5,7 @@ export default class Walker {
     this.x = 0
     this.y = 0
     this.context = canvas_obj.context
-    this.context.fillStyle = '#000'
+    this.fillStyle = '#000'
   }
 
   display = () => {
@@ -15,8 +15,10 @@ export default class Walker {
     const end_angle = Math.PI * 2
 
     context.beginPath()
+    context.fillStyle = this.fillStyle
     context.arc(x, y, radius, start_angle, end_angle) // x and y is a center
     context.fill()
+    context.closePath()
   }
 
   step_9_directions = () => {
