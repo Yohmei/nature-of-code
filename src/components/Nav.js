@@ -9,7 +9,7 @@ export default class Nav extends Component {
 
   state = {
     inro_pages: ['Home', 'Random Walker', 'Normal Distribution', 'Perlin Noise'],
-    vector_pages: ['Vectors', 'Unit Vectors', 'With Mover']
+    vector_pages: ['Vectors', 'Unit Vectors', 'Mover']
   }
 
   nav = React.createRef()

@@ -16,6 +16,13 @@ export default class PVector {
     }
   }
 
+  limit = value => {
+    if (this.magnitude() > value) {
+      this.unit_vector()
+      this.multiply_scalar(value)
+    }
+  }
+
   add = vector => {
     this.x = this.x + vector.x
     this.y = this.y + vector.y

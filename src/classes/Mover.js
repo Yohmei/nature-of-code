@@ -6,11 +6,15 @@ import { random } from './_utils'
 export default class Mover {
   constructor(canvas_obj) {
     this.location = new PVector(random(100), random(-100))
-    this.velocity = new PVector(random(-2, 2), random(-2, 2))
+    this.velocity = new PVector(0, 0)
+    this.acceleration = new PVector(0.01, 0.01)
     this.renderer = new Renderer(canvas_obj)
+    this.top_speed = 2
   }
 
   update = () => {
+    this.velocity.add(this.acceleration)
+    this.velocity.limit(this.top_speed)
     this.location.add(this.velocity)
   }
 

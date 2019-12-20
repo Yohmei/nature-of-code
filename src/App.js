@@ -36,7 +36,7 @@ export default class App extends Component {
                   {/* Vectors */}
                   <Route exact path='/vectors' component={Vectors} />
                   <Route exact path='/unit-vectors' component={UnitVectors} />
-                  <Route exact path='/with-mover' component={WithMover} />
+                  <Route exact path='/mover' component={WithMover} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>
