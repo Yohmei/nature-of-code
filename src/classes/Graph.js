@@ -10,25 +10,25 @@ export default class Graph {
     this.context.font = '14px Open Sans'
   }
 
-  draw_line_x() {
+  draw_line_x = () => {
     this.context.beginPath()
     this.context.moveTo(-this.x0, 0)
     this.context.lineTo(this.x0, 0)
     this.context.stroke()
   }
 
-  draw_line_y() {
+  draw_line_y = () => {
     this.context.beginPath()
     this.context.moveTo(0, -this.y0)
     this.context.lineTo(0, this.y0)
     this.context.stroke()
   }
 
-  translate_coordinates() {
+  translate_coordinates = () => {
     this.context.translate(this.x0, this.y0)
   }
 
-  draw_graph() {
+  draw_graph = () => {
     // Draw the graph
     this.draw_line_x()
     this.draw_line_y()

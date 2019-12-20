@@ -8,7 +8,7 @@ export default class Walker {
     this.context.fillStyle = '#000'
   }
 
-  display = _ => {
+  display = () => {
     const { x, y, context } = this
     const radius = 2
     const start_angle = 0
@@ -19,7 +19,7 @@ export default class Walker {
     context.fill()
   }
 
-  step_9_directions = _ => {
+  step_9_directions = () => {
     // 8 directional step and the possibility to stay in place = 9 possibilities
     const step_x = Math.floor(random(3)) - 1 // 3 ways to go horizontally
     const step_y = Math.floor(random(3)) - 1 // 3 ways vertically
@@ -29,7 +29,7 @@ export default class Walker {
     this.y += step_y
   }
 
-  step_tend_right = _ => {
+  step_tend_right = () => {
     const r = Math.random()
 
     // A 40% chance of moving to the right!

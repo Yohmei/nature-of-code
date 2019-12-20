@@ -4,34 +4,34 @@ export default class PVector {
     this.y = y
   }
 
-  magnitude() {
+  magnitude = () => {
     const { x, y } = this
     return Math.sqrt(x * x + y * y)
   }
 
-  unit_vector() {
+  unit_vector = () => {
     const m = this.magnitude()
     if (m != 0) {
       this.divide_scalar(m)
     }
   }
 
-  add(vector) {
+  add = vector => {
     this.x = this.x + vector.x
     this.y = this.y + vector.y
   }
 
-  subtract(vector) {
+  subtract = vector => {
     this.x = this.x - vector.x
     this.y = this.y - vector.y
   }
 
-  multiply_scalar(number) {
+  multiply_scalar = number => {
     this.x = this.x * number
     this.y = this.y * number
   }
 
-  divide_scalar(number) {
+  divide_scalar = number => {
     this.x = this.x / number
     this.y = this.y / number
   }

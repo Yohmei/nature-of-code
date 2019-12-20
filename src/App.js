@@ -11,6 +11,7 @@ import NormalDistribution from './pages/inroduction/NormalDistribution'
 import PerlinNoise from './pages/inroduction/PerlinNoise'
 import Vectors from './pages/vectors/Vectors'
 import UnitVectors from './pages/vectors/UnitVectors'
+import WithMover from './pages/vectors/WithMover'
 
 export default class App extends Component {
   render() {
@@ -35,6 +36,7 @@ export default class App extends Component {
                   {/* Vectors */}
                   <Route exact path='/vectors' component={Vectors} />
                   <Route exact path='/unit-vectors' component={UnitVectors} />
+                  <Route exact path='/with-mover' component={WithMover} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

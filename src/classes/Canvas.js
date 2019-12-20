@@ -18,7 +18,7 @@ export default class Canvas {
     animate(args)
 
     if (!stop_anime)
-      window.requestAnimationFrame(_ => {
+      window.requestAnimationFrame(() => {
         return this.update(args)
       })
   }
@@ -34,7 +34,7 @@ export default class Canvas {
     animate(args)
 
     if (!stop_anime)
-      window.requestAnimationFrame(_ => {
+      window.requestAnimationFrame(() => {
         return this.update_no_clear(args)
       })
   }
