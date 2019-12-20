@@ -1,7 +1,16 @@
+import { random } from './_utils'
+
 export default class PVector {
-  constructor(x, y) {
+  constructor(x, y, z) {
     this.x = x
     this.y = y
+    this.z = z
+  }
+
+  // Another constructor. Vector created by specifying angle and length of a vector
+  static from_angle = (angle, length) => {
+    if (typeof length === 'undefined') length = 1
+    return new PVector(length * Math.cos(angle), length * Math.sin(angle), 0)
   }
 
   magnitude = () => {
@@ -41,5 +50,10 @@ export default class PVector {
   divide_scalar = number => {
     this.x = this.x / number
     this.y = this.y / number
+  }
+
+  // returns a unit vector with random direction
+  static random2d = () => {
+    return PVector.from_angle(random(Math.PI * 2))
   }
 }

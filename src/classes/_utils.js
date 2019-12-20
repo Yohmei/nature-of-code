@@ -51,6 +51,8 @@ export class Gaussian {
   }
 }
 
+// Maps the value in the old range to new range.
+// Example 0.3 in the range 0 - 1 will be mapped to 30 in the range 0 - 100
 export const map_range = (value, curr_min, curr_max, new_min, new_max) => {
   return new_min + ((new_max - new_min) * (value - curr_min)) / (curr_max - curr_min)
 }

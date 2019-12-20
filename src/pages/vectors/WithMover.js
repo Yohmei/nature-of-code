@@ -5,7 +5,6 @@ import Canvas from '../../classes/Canvas'
 import Graph from '../../classes/Graph'
 import canvas_hoc from '../../components/canvas_hoc'
 import Mover from '../../classes/Mover'
-import Renderer from '../../classes/Renderer'
 
 /**
  *
