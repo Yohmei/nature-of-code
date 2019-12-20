@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Canvas from '../../objects/Canvas'
-import Graph from '../../objects/Graph'
+import Canvas from '../../classes/Canvas'
+import Graph from '../../classes/Graph'
 import canvas_hoc from '../../components/canvas_hoc'
-import Renderer from '../../objects/Renderer'
-import PVector from '../../objects/PVector'
+import Renderer from '../../classes/Renderer'
+import PVector from '../../classes/PVector'
 
 const mouse = new PVector(0, 0)
 
@@ -52,7 +52,6 @@ class UnitVectors extends Component {
   name = UnitVectors
 
   handle_mouse_move = event => {
-    const { canvas_el } = this.props
     mouse.x = event.clientX
     mouse.y = event.clientY
     mouse.subtract({ x: window.innerWidth / 2, y: window.innerHeight / 2 })

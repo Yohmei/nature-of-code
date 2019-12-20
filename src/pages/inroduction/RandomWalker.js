@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Canvas from '../../objects/Canvas'
-import Graph from '../../objects/Graph'
+import Canvas from '../../classes/Canvas'
+import Graph from '../../classes/Graph'
 import canvas_hoc from '../../components/canvas_hoc'
-import Walker from '../../objects/Walker'
+import Walker from '../../classes/Walker'
 
 const animate = args => {
   const { walker } = args
