@@ -6,25 +6,36 @@ import Renderer from './Renderer'
 import { random, map_range } from './_utils'
 
 export default class Mover {
-  constructor(canvas_obj) {
+  constructor(
+    canvas_obj,
+    {
+      location = new PVector(random(-100, 100), random(-100, 100)),
+      velocity = new PVector(0, 0),
+      acceleration = new PVector(0, 0),
+      mass = 1
+    } = {}
+  ) {
     this.perlin = new toxi.math.noise.PerlinNoise()
-    this.location = new PVector(random(-100, 100), random(-100, 100))
-    this.velocity = new PVector(0, 0)
-    this.acceleration = PVector.random2d()
     this.renderer = new Renderer(canvas_obj)
-    this.top_speed = 2
+    this.location = location
+    this.velocity = velocity
+    this.acceleration = acceleration
+    this.mass = mass
+    this.top_speed = 3
     this.counter = 1
   }
 
-  apply_force = ({ force = new PVector(1, 1), mass = 1 } = {}) => {
-    force.divide_scalar(mass)
-    this.acceleration = force
+  apply_force = ({ force = new PVector(1, 1) } = {}) => {
+    // creates a copy of a force vector and mass is taken into the account
+    const acceleration = PVector.divide_scalar_return(force, this.mass)
+    // adds up all the forces
+    this.acceleration.add(acceleration)
   }
 
   update = () => {
     this.velocity.add(this.acceleration)
-    this.velocity.limit(this.top_speed)
     this.location.add(this.velocity)
+    this.acceleration.multiply_scalar(0)
   }
 
   update_with_random_acceleration = () => {
@@ -57,13 +68,13 @@ export default class Mover {
     this.renderer.draw_circle(this.location)
   }
 
-  check_edges = () => {
+  check_edges = ({ right_edge = 100, left_edge = -100, bottom_edge = 100, top_edge = -100 } = {}) => {
     const { location } = this
 
-    if (location.x > 100) this.location.x = -100
-    else if (location.x < -100) this.location.x = 100
+    if (location.x > right_edge) this.location.x = left_edge
+    else if (location.x < left_edge) this.location.x = right_edge
 
-    if (location.y > 100) this.location.y = -100
-    else if (location.y < -100) this.location.y = 100
+    if (location.y > bottom_edge) this.location.y = top_edge
+    else if (location.y < top_edge) this.location.y = bottom_edge
   }
 }

@@ -4,16 +4,16 @@ export default class Renderer {
     this.strokeStyle = '#000'
   }
 
-  draw_circle = vector => {
+  draw_circle = (vector, { radius = 5 } = {}) => {
     const { context } = this
     const x = vector.x
     const y = vector.y
-    const radius = 5
+    const r = radius
     const start_angle = 0
     const end_angle = Math.PI * 2
 
     context.beginPath()
-    context.arc(x, y, radius, start_angle, end_angle) // x and y is a center
+    context.arc(x, y, r, start_angle, end_angle) // x and y is a center
     context.stroke()
     context.closePath()
   }

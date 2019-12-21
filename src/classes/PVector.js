@@ -18,6 +18,11 @@ export default class PVector {
     return PVector.from_angle(random(Math.PI * 2))
   }
 
+  // Should clone an object instance, but could be the problem if the object has properties as other objects
+  static clone = object => {
+    return Object.assign(Object.create(Object.getPrototypeOf(object)), object)
+  }
+
   magnitude = () => {
     const { x, y } = this
     return Math.sqrt(x * x + y * y)
@@ -61,5 +66,9 @@ export default class PVector {
   divide_scalar = number => {
     this.x = this.x / number
     this.y = this.y / number
+  }
+
+  static divide_scalar_return = (vector1, number) => {
+    return new PVector(vector1.x / number, vector1.y / number)
   }
 }

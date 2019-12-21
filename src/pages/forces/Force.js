@@ -7,6 +7,9 @@ import canvas_hoc from '../../components/canvas_hoc'
 import Mover from '../../classes/Mover'
 import PVector from '../../classes/PVector'
 
+const gravity = PVector.from_angle(Math.PI * 0.5, 0.05)
+const wind = PVector.from_angle(Math.PI, 0.01)
+
 /**
  *
  * @param {Object} args
@@ -21,9 +24,12 @@ const animate = args => {
   if (args.time == 500) args.stop_anime = true
 
   // Animation here
+  mover.renderer.draw_rectangle({ x: -500, y: -200, width: 1000, height: 400 })
+  mover.apply_force({ force: gravity })
+  mover.apply_force({ force: wind })
   mover.update()
   mover.display()
-  mover.check_edges()
+  mover.check_edges({ right_edge: 500, left_edge: -500, bottom_edge: 200, top_edge: -200 })
 
   args.time++
 }
