@@ -26,11 +26,12 @@ const animate = args => {
   renderer.draw_circle(location)
   renderer.draw_line({ x: 0, y: 0 }, location)
 
-  renderer.log(`
-  Vector magnitude = ${location.magnitude()};
-  x = ${location.x};
-  y = ${location.y}
-  `)
+  const location_mag_to_string = `magnitude = ${location.magnitude()}`
+  const location_x_to_string = `x = ${location.x}`
+  const location_y_to_string = `y = ${location.y}`
+  renderer.log({ content: location_mag_to_string, x: location.x + 5, y: location.y - 5 })
+  renderer.log({ content: location_x_to_string, x: location.x, y: 20 })
+  renderer.log({ content: location_y_to_string, x: -50, y: location.y })
 
   args.time++
 }

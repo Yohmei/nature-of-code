@@ -21,8 +21,10 @@
 
 nav {
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   padding: 80px 40px 0;
-  font-size: 3em;
+  font-size: 3vw;
   background-color: $bg;
   z-index: 10;
   position: absolute;
@@ -46,7 +48,7 @@ nav {
   a:link {
     font-family: $h_font;
     text-transform: uppercase;
-    letter-spacing: 10px;
+    letter-spacing: 0.7vw;
     display: block;
     width: max-content;
     overflow: hidden;

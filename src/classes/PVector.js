@@ -13,6 +13,11 @@ export default class PVector {
     return new PVector(length * Math.cos(angle), length * Math.sin(angle), 0)
   }
 
+  // returns a unit vector with random direction
+  static random2d = () => {
+    return PVector.from_angle(random(Math.PI * 2))
+  }
+
   magnitude = () => {
     const { x, y } = this
     return Math.sqrt(x * x + y * y)
@@ -42,6 +47,12 @@ export default class PVector {
     this.y = this.y - vector.y
   }
 
+  // useful for cases when the vector should be created with magnitude from previous location
+  // may be
+  static subtract_return = (vector1, vector2) => {
+    return new PVector(vector1.x - vector2.x, vector1.y - vector2.y)
+  }
+
   multiply_scalar = number => {
     this.x = this.x * number
     this.y = this.y * number
@@ -50,10 +61,5 @@ export default class PVector {
   divide_scalar = number => {
     this.x = this.x / number
     this.y = this.y / number
-  }
-
-  // returns a unit vector with random direction
-  static random2d = () => {
-    return PVector.from_angle(random(Math.PI * 2))
   }
 }

@@ -8,7 +8,7 @@ import { random, map_range } from './_utils'
 export default class Mover {
   constructor(canvas_obj) {
     this.perlin = new toxi.math.noise.PerlinNoise()
-    this.location = new PVector(random(100), random(-100))
+    this.location = new PVector(random(-100, 100), random(-100, 100))
     this.velocity = new PVector(0, 0)
     this.acceleration = PVector.random2d()
     this.renderer = new Renderer(canvas_obj)
@@ -16,10 +16,21 @@ export default class Mover {
     this.counter = 1
   }
 
+  apply_force = ({ force = new PVector(1, 1), mass = 1 } = {}) => {
+    force.divide_scalar(mass)
+    this.acceleration = force
+  }
+
   update = () => {
+    this.velocity.add(this.acceleration)
+    this.velocity.limit(this.top_speed)
+    this.location.add(this.velocity)
+  }
+
+  update_with_random_acceleration = () => {
     // Totally random
     // this.acceleration = PVector.random2d()
-    // ----
+
     // Perlin noise random
     const angle = Math.PI * map_range(this.perlin.noise(this.counter), 0, 1, 0, 200)
     this.acceleration = PVector.from_angle(angle)
@@ -28,6 +39,18 @@ export default class Mover {
     this.velocity.limit(this.top_speed)
     this.location.add(this.velocity)
     this.counter++
+  }
+
+  update_with_mouse = mouse => {
+    const dir = PVector.subtract_return(mouse, this.location)
+
+    dir.unit_vector()
+    dir.multiply_scalar(0.5)
+
+    this.acceleration = dir
+    this.velocity.add(this.acceleration)
+    this.velocity.limit(this.top_speed)
+    this.location.add(this.velocity)
   }
 
   display = () => {

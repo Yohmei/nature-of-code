@@ -5,6 +5,7 @@ import Canvas from '../../classes/Canvas'
 import Graph from '../../classes/Graph'
 import canvas_hoc from '../../components/canvas_hoc'
 import Mover from '../../classes/Mover'
+import PVector from '../../classes/PVector'
 
 /**
  *
@@ -20,7 +21,7 @@ const animate = args => {
   if (args.time == 500) args.stop_anime = true
 
   // Animation here
-  mover.update_with_random_acceleration()
+  mover.update()
   mover.display()
   mover.check_edges()
 
@@ -34,19 +35,17 @@ const draw = (canvas_el, animate) => {
     const mover = new Mover(canvas_obj)
 
     graph_obj.translate_coordinates()
-    graph_obj.draw_graph()
-    mover.renderer.draw_rectangle()
 
-    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, time: 0, mover })
+    canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, mover })
   }, 100)
 }
 
-class WithMover extends Component {
+class Force extends Component {
   static propTypes = {
     canvas_el: PropTypes.object
   }
 
-  name = WithMover
+  name = Force
 
   render() {
     const { canvas_el } = this.props
@@ -58,4 +57,4 @@ class WithMover extends Component {
   }
 }
 
-export default canvas_hoc(WithMover, animate, draw)
+export default canvas_hoc(Force, animate, draw)

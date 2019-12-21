@@ -12,6 +12,8 @@ import PerlinNoise from './pages/inroduction/PerlinNoise'
 import Vectors from './pages/vectors/Vectors'
 import UnitVectors from './pages/vectors/UnitVectors'
 import WithMover from './pages/vectors/WithMover'
+import MouseChaiser from './pages/vectors/MouseChaiser'
+import Force from './pages/forces/Force'
 
 export default class App extends Component {
   render() {
@@ -37,6 +39,9 @@ export default class App extends Component {
                   <Route exact path='/vectors' component={Vectors} />
                   <Route exact path='/unit-vectors' component={UnitVectors} />
                   <Route exact path='/mover' component={WithMover} />
+                  <Route exact path='/mouse-chaiser' component={MouseChaiser} />
+                  {/* Forces */}
+                  <Route exact path='/force' component={Force} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

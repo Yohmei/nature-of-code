@@ -9,14 +9,15 @@ export default class Nav extends Component {
 
   state = {
     inro_pages: ['Home', 'Random Walker', 'Normal Distribution', 'Perlin Noise'],
-    vector_pages: ['Vectors', 'Unit Vectors', 'Mover']
+    vector_pages: ['Vectors', 'Unit Vectors', 'Mover', 'Mouse Chaiser'],
+    forces_pages: ['Force']
   }
 
   nav = React.createRef()
 
   render() {
     const { toggle_burger } = this.props
-    const { inro_pages, vector_pages } = this.state
+    const { inro_pages, vector_pages, forces_pages } = this.state
 
     return (
       <nav onClick={toggle_burger} ref={this.nav}>
@@ -35,6 +36,18 @@ export default class Nav extends Component {
         <div className='intro-links'>
           <div className='head'>VECTORS</div>
           {vector_pages.map((page, index) => {
+            const page_link = page.toLowerCase().replace(/\s/g, '-')
+
+            return (
+              <div key={index}>
+                <Link to={page == 'Home' ? '/' : `/${page_link}`}>{page}</Link>
+              </div>
+            )
+          })}
+        </div>
+        <div className='intro-links'>
+          <div className='head'>FORCES</div>
+          {forces_pages.map((page, index) => {
             const page_link = page.toLowerCase().replace(/\s/g, '-')
 
             return (
