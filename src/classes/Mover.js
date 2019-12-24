@@ -21,7 +21,7 @@ export default class Mover {
     this.velocity = velocity
     this.acceleration = acceleration
     this.mass = mass
-    this.top_speed = 3
+    this.top_speed = 5
     this.counter = 1
   }
 
@@ -32,10 +32,9 @@ export default class Mover {
     this.acceleration.add(acceleration)
   }
 
-  update = () => {
+  update = time => {
     this.velocity.add(this.acceleration)
     this.location.add(this.velocity)
-    this.acceleration.multiply_scalar(0)
   }
 
   update_with_random_acceleration = () => {
@@ -58,23 +57,31 @@ export default class Mover {
     dir.unit_vector()
     dir.multiply_scalar(0.5)
 
-    this.acceleration = dir
+    this.acceleration = dir // the acceleration is constant = 0.5. look above
     this.velocity.add(this.acceleration)
     this.velocity.limit(this.top_speed)
     this.location.add(this.velocity)
   }
 
   display = () => {
-    this.renderer.draw_circle(this.location)
+    this.renderer.draw_circle(this.location, { radius: this.mass })
   }
 
   check_edges = ({ right_edge = 100, left_edge = -100, bottom_edge = 100, top_edge = -100 } = {}) => {
-    const { location } = this
+    if (this.location.x > right_edge) {
+      this.velocity.x *= -1
+      this.location.x = right_edge
+    } else if (this.location.x < left_edge) {
+      this.velocity.x *= -1
+      this.location.x = left_edge
+    }
 
-    if (location.x > right_edge) this.location.x = left_edge
-    else if (location.x < left_edge) this.location.x = right_edge
-
-    if (location.y > bottom_edge) this.location.y = top_edge
-    else if (location.y < top_edge) this.location.y = bottom_edge
+    if (this.location.y > bottom_edge) {
+      this.velocity.y *= -1
+      this.location.y = bottom_edge
+    } else if (this.location.y < top_edge) {
+      this.velocity.y *= -1
+      this.location.y = top_edge
+    }
   }
 }

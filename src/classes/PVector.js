@@ -18,11 +18,6 @@ export default class PVector {
     return PVector.from_angle(random(Math.PI * 2))
   }
 
-  // Should clone an object instance, but could be the problem if the object has properties as other objects
-  static clone = object => {
-    return Object.assign(Object.create(Object.getPrototypeOf(object)), object)
-  }
-
   magnitude = () => {
     const { x, y } = this
     return Math.sqrt(x * x + y * y)

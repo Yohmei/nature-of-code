@@ -13,7 +13,7 @@ import Vectors from './pages/vectors/Vectors'
 import UnitVectors from './pages/vectors/UnitVectors'
 import WithMover from './pages/vectors/WithMover'
 import MouseChaiser from './pages/vectors/MouseChaiser'
-import Force from './pages/forces/Force'
+import Acceleration from './pages/forces/Acceleration'
 
 export default class App extends Component {
   render() {
@@ -41,7 +41,7 @@ export default class App extends Component {
                   <Route exact path='/mover' component={WithMover} />
                   <Route exact path='/mouse-chaiser' component={MouseChaiser} />
                   {/* Forces */}
-                  <Route exact path='/force' component={Force} />
+                  <Route exact path='/acceleration' component={Acceleration} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>
