@@ -26,13 +26,17 @@ export default class Mover {
   }
 
   apply_force = ({ force = new PVector(1, 1) } = {}) => {
-    // creates a copy of a force vector and mass is taken into the account
+    // acceleration = force / mass
     const acceleration = PVector.divide_scalar_return(force, this.mass)
-    // adds up all the forces
+    // adds up all the forces to the acceleration vector
     this.acceleration.add(acceleration)
   }
 
-  update = time => {
+  update = () => {
+    return null
+  }
+
+  update_with_acceleration = () => {
     this.velocity.add(this.acceleration)
     this.location.add(this.velocity)
   }

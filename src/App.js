@@ -14,6 +14,7 @@ import UnitVectors from './pages/vectors/UnitVectors'
 import WithMover from './pages/vectors/WithMover'
 import MouseChaiser from './pages/vectors/MouseChaiser'
 import Acceleration from './pages/forces/Acceleration'
+import Friction from './pages/forces/Friction'
 
 export default class App extends Component {
   render() {
@@ -42,6 +43,7 @@ export default class App extends Component {
                   <Route exact path='/mouse-chaiser' component={MouseChaiser} />
                   {/* Forces */}
                   <Route exact path='/acceleration' component={Acceleration} />
+                  <Route exact path='/friction' component={Friction} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

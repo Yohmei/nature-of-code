@@ -7,8 +7,6 @@ import canvas_hoc from '../../components/canvas_hoc'
 import Mover from '../../classes/Mover'
 import PVector from '../../classes/PVector'
 
-// The real gravity is different. This gravity is a regular force
-// It pulls weaker if mass is bigger
 const gravity = PVector.from_angle(Math.PI * 0.5, 0.5)
 const wind = PVector.from_angle(Math.PI, 0.5)
 
@@ -28,7 +26,7 @@ const animate = args => {
   // Animation here
   mover.renderer.draw_rectangle({ x: -500, y: -200, width: 1000, height: 400 })
 
-  mover.update_with_acceleration()
+  mover.update()
   mover.display()
   mover.check_edges({ right_edge: 500, left_edge: -500, bottom_edge: 200, top_edge: -200 })
 
@@ -53,12 +51,12 @@ const draw = (canvas_el, animate) => {
   }, 200)
 }
 
-class Acceleration extends Component {
+class Friction extends Component {
   static propTypes = {
     canvas_el: PropTypes.object
   }
 
-  name = Acceleration
+  name = Friction
 
   render() {
     const { canvas_el } = this.props
@@ -70,4 +68,4 @@ class Acceleration extends Component {
   }
 }
 
-export default canvas_hoc(Acceleration, animate, draw)
+export default canvas_hoc(Friction, animate, draw)
