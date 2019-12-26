@@ -84,10 +84,7 @@ export default class Mover {
   update_with_mouse = mouse => {
     const dir = PVector.subtract_return_new(mouse, this.location)
 
-    dir.unit_vector()
-    dir.multiply_scalar(0.5)
-
-    this.acceleration = dir // the acceleration is constant = 0.5. look above
+    this.acceleration = dir.unit_vector().multiply_scalar(0.5) // the acceleration is constant = 0.5. look above
     this.velocity.add(this.acceleration)
     this.velocity.limit(this.top_speed)
     this.location.add(this.velocity)

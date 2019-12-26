@@ -50,6 +50,10 @@ export default class PVector {
     return this
   }
 
+  static add_return_new = (vector1, vector2) => {
+    return new PVector(vector1.x + vector2.x, vector1.y + vector2.y)
+  }
+
   subtract = vector => {
     this.x = this.x - vector.x
     this.y = this.y - vector.y
@@ -57,8 +61,6 @@ export default class PVector {
     return this
   }
 
-  // useful for cases when the vector should be created with magnitude from previous location
-  // may be
   static subtract_return_new = (vector1, vector2) => {
     return new PVector(vector1.x - vector2.x, vector1.y - vector2.y)
   }
@@ -68,6 +70,10 @@ export default class PVector {
     this.y = this.y * number
 
     return this
+  }
+
+  static multiply_scalar_return_new = (vector1, number) => {
+    return new PVector(vector1.x * number, vector1.y * number)
   }
 
   divide_scalar = number => {

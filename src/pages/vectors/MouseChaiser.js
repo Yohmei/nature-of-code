@@ -20,7 +20,7 @@ const animate = args => {
   const { movers } = args
 
   // A condition to stop the animation
-  if (args.time == 500) args.stop_anime = true
+  if (false) args.stop_anime = true
 
   // Animation here
   movers[0].renderer.draw_rectangle()
