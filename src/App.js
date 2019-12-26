@@ -15,6 +15,7 @@ import WithMover from './pages/vectors/WithMover'
 import MouseChaiser from './pages/vectors/MouseChaiser'
 import Acceleration from './pages/forces/Acceleration'
 import Friction from './pages/forces/Friction'
+import FluidResistance from './pages/forces/FluidResistance'
 
 export default class App extends Component {
   render() {
@@ -44,6 +45,7 @@ export default class App extends Component {
                   {/* Forces */}
                   <Route exact path='/acceleration' component={Acceleration} />
                   <Route exact path='/friction' component={Friction} />
+                  <Route exact path='/fluid-resistance' component={FluidResistance} />
                 </Switch>
               </CSSTransition>
             </TransitionGroup>

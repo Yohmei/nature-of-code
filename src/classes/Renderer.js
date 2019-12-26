@@ -32,14 +32,22 @@ export default class Renderer {
     context.closePath()
   }
 
-  draw_rectangle = ({ x = -100, y = -100, width = 200, height = 200 } = {}) => {
+  draw_rectangle = ({ x = -100, y = -100, width = 200, height = 200, method = 'stroke', colour = '#000' } = {}) => {
     const { context } = this
 
-    context.beginPath()
-    context.strokeStyle = this.strokeStyle
-    context.rect(x, y, width, height)
-    context.stroke()
-    context.closePath()
+    if (method == 'stroke') {
+      context.beginPath()
+      context.strokeStyle = colour
+      context.rect(x, y, width, height)
+      context.stroke()
+      context.closePath()
+    } else if (method == 'fill') {
+      context.beginPath()
+      context.fillStyle = colour
+      context.rect(x, y, width, height)
+      context.fill()
+      context.closePath()
+    }
   }
 
   log = ({ content = 'Logging here ', x = 400, y = -200 } = {}) => {

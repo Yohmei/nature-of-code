@@ -37,7 +37,7 @@ const draw = (canvas_el, animate) => {
     const mover = new Mover(canvas_obj, { mass: 5 })
     // The real gravity is different. This gravity is a regular force
     // It pulls weaker if mass is bigger
-    const gravity = PVector.from_angle(Math.PI * 0.5, 0.5)
+    const gravity = PVector.from_angle(Math.PI * 0.5, 1)
     const wind = PVector.from_angle(Math.PI, 0.5)
 
     mover.apply_force({ force: gravity })

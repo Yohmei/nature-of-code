@@ -25,11 +25,34 @@ export default class Mover {
     this.counter = 1
   }
 
-  apply_force = ({ force = new PVector(1, 1) } = {}) => {
+  apply_force = ({ force = new PVector(1, 0) } = {}) => {
     // acceleration = force / mass
     const acceleration = PVector.divide_scalar_return_new(force, this.mass)
     // adds up all the forces to the acceleration vector
     this.acceleration.add(acceleration)
+  }
+
+  apply_water_resistance = liquid => {
+    if (
+      this.location.x > liquid.x &&
+      this.location.x < liquid.x + liquid.width &&
+      this.location.y > liquid.y &&
+      this.location.y < liquid.y + liquid.height
+    ) {
+      const speed = this.velocity.magnitude()
+      const drag_magnitude = liquid.drag_coefficient * speed * speed
+      const velocity = this.velocity.copy()
+      const resistance = velocity.unit_vector().multiply_scalar(-1 * drag_magnitude)
+
+      this.apply_force({ force: resistance })
+    }
+  }
+
+  update_with_water = () => {
+    this.velocity.add(this.acceleration)
+    this.location.add(this.velocity)
+    // reset acceleration each frame update since it is constant
+    this.acceleration.multiply_scalar(0)
   }
 
   update_with_friction = () => {
