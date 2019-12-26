@@ -21,7 +21,7 @@ export default class Mover {
     this.velocity = velocity
     this.acceleration = acceleration
     this.mass = mass
-    this.top_speed = 5
+    this.top_speed = 10
     this.counter = 1
   }
 
@@ -76,7 +76,7 @@ export default class Mover {
     this.acceleration = PVector.from_angle(angle)
     // ----
     this.velocity.add(this.acceleration)
-    this.velocity.limit(this.top_speed)
+    this.velocity.limit(this.top_speed / 4)
     this.location.add(this.velocity)
     this.counter++
   }
