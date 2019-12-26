@@ -7,9 +7,6 @@ import canvas_hoc from '../../components/canvas_hoc'
 import Mover from '../../classes/Mover'
 import PVector from '../../classes/PVector'
 
-const gravity = PVector.from_angle(Math.PI * 0.5, 0.5)
-const wind = PVector.from_angle(Math.PI, 0.5)
-
 /**
  *
  * @param {Object} args
@@ -26,7 +23,21 @@ const animate = args => {
   // Animation here
   mover.renderer.draw_rectangle({ x: -500, y: -200, width: 1000, height: 400 })
 
-  mover.update()
+  const wind = PVector.from_angle(Math.PI, 1)
+  const gravity = PVector.from_angle(Math.PI * 0.5, 3)
+
+  mover.apply_force({ force: wind })
+  mover.apply_force({ force: gravity })
+
+  /** @type {PVector} */
+  const velocity = mover.velocity.copy()
+  const friction_coefficient = 1 // how strong the friction
+  const normal_force = 1 // force perpendicular to the object’s motion along a surface
+  const friction = velocity.unit_vector().multiply_scalar(-1 * friction_coefficient * normal_force)
+
+  mover.apply_force({ force: friction })
+
+  mover.update_with_friction()
   mover.display()
   mover.check_edges({ right_edge: 500, left_edge: -500, bottom_edge: 200, top_edge: -200 })
 
@@ -38,12 +49,6 @@ const draw = (canvas_el, animate) => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
     const mover = new Mover(canvas_obj, { mass: 5 })
-
-    mover.apply_force({ force: gravity })
-
-    setTimeout(() => {
-      mover.apply_force({ force: wind })
-    }, 3000)
 
     graph_obj.translate_coordinates()
 

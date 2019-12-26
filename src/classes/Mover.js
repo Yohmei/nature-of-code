@@ -27,13 +27,16 @@ export default class Mover {
 
   apply_force = ({ force = new PVector(1, 1) } = {}) => {
     // acceleration = force / mass
-    const acceleration = PVector.divide_scalar_return(force, this.mass)
+    const acceleration = PVector.divide_scalar_return_new(force, this.mass)
     // adds up all the forces to the acceleration vector
     this.acceleration.add(acceleration)
   }
 
-  update = () => {
-    return null
+  update_with_friction = () => {
+    this.velocity.add(this.acceleration)
+    this.location.add(this.velocity)
+    // reset acceleration each frame update since it is constant
+    this.acceleration.multiply_scalar(0)
   }
 
   update_with_acceleration = () => {
@@ -56,7 +59,7 @@ export default class Mover {
   }
 
   update_with_mouse = mouse => {
-    const dir = PVector.subtract_return(mouse, this.location)
+    const dir = PVector.subtract_return_new(mouse, this.location)
 
     dir.unit_vector()
     dir.multiply_scalar(0.5)

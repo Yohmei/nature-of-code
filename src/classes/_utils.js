@@ -56,7 +56,3 @@ export class Gaussian {
 export const map_range = (value, curr_min, curr_max, new_min, new_max) => {
   return new_min + ((new_max - new_min) * (value - curr_min)) / (curr_max - curr_min)
 }
-
-export const clone_object = object => {
-  return Object.assign(Object.create(Object.getPrototypeOf(object)), object)
-}

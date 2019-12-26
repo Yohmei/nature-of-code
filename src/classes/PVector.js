@@ -18,6 +18,10 @@ export default class PVector {
     return PVector.from_angle(random(Math.PI * 2))
   }
 
+  copy = () => {
+    return new PVector(this.x, this.y, this.z)
+  }
+
   magnitude = () => {
     const { x, y } = this
     return Math.sqrt(x * x + y * y)
@@ -28,6 +32,8 @@ export default class PVector {
     if (m != 0) {
       this.divide_scalar(m)
     }
+
+    return this
   }
 
   limit = value => {
@@ -40,30 +46,38 @@ export default class PVector {
   add = vector => {
     this.x = this.x + vector.x
     this.y = this.y + vector.y
+
+    return this
   }
 
   subtract = vector => {
     this.x = this.x - vector.x
     this.y = this.y - vector.y
+
+    return this
   }
 
   // useful for cases when the vector should be created with magnitude from previous location
   // may be
-  static subtract_return = (vector1, vector2) => {
+  static subtract_return_new = (vector1, vector2) => {
     return new PVector(vector1.x - vector2.x, vector1.y - vector2.y)
   }
 
   multiply_scalar = number => {
     this.x = this.x * number
     this.y = this.y * number
+
+    return this
   }
 
   divide_scalar = number => {
     this.x = this.x / number
     this.y = this.y / number
+
+    return this
   }
 
-  static divide_scalar_return = (vector1, number) => {
+  static divide_scalar_return_new = (vector1, number) => {
     return new PVector(vector1.x / number, vector1.y / number)
   }
 }

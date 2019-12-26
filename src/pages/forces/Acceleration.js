@@ -7,11 +7,6 @@ import canvas_hoc from '../../components/canvas_hoc'
 import Mover from '../../classes/Mover'
 import PVector from '../../classes/PVector'
 
-// The real gravity is different. This gravity is a regular force
-// It pulls weaker if mass is bigger
-const gravity = PVector.from_angle(Math.PI * 0.5, 0.5)
-const wind = PVector.from_angle(Math.PI, 0.5)
-
 /**
  *
  * @param {Object} args
@@ -40,6 +35,10 @@ const draw = (canvas_el, animate) => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
     const mover = new Mover(canvas_obj, { mass: 5 })
+    // The real gravity is different. This gravity is a regular force
+    // It pulls weaker if mass is bigger
+    const gravity = PVector.from_angle(Math.PI * 0.5, 0.5)
+    const wind = PVector.from_angle(Math.PI, 0.5)
 
     mover.apply_force({ force: gravity })
 
