@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
+    "open": "start http://localhost:3000",
     "rm-build": "rm -rf build",
     "razzle-start": "razzle start",
-    "start": "run-s rm-build razzle-start",
+    "start": "run-s rm-build open razzle-start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"
