@@ -18,15 +18,13 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
-    const canvas_obj = new Canvas(canvas_el)
-    const graph_obj = new Graph(canvas_obj)
-    const walker = new Walker(canvas_obj)
+  const canvas_obj = new Canvas(canvas_el)
+  const graph_obj = new Graph(canvas_obj)
+  const walker = new Walker(canvas_obj)
 
-    graph_obj.translate_coordinates()
+  graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, animate, walker })
-  }, 100)
+  canvas_obj.update({ stop_anime: false, graph_obj, animate, walker })
 }
 
 class RandomWalker extends Component {

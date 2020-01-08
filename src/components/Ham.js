@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { S } from '../classes/_utils'
 
 import Nav from './Nav'
 
@@ -16,10 +17,12 @@ class Ham extends Component {
     br.classList.toggle('is-active')
 
     if (!active_nav) {
-      // animate(br, -(window.innerWidth - br.offsetLeft) + 110)
       this.setState({ active_nav: true })
     } else {
-      this.setState({ active_nav: false })
+      S('nav').style.setProperty('--top', '100%')
+      setTimeout(() => {
+        this.setState({ active_nav: false })
+      }, 300)
     }
   }
 

@@ -28,17 +28,15 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
-    const canvas_obj = new Canvas(canvas_el)
-    const graph_obj = new Graph(canvas_obj)
-    const mover = new Mover(canvas_obj)
+  const canvas_obj = new Canvas(canvas_el)
+  const graph_obj = new Graph(canvas_obj)
+  const mover = new Mover(canvas_obj)
 
-    graph_obj.translate_coordinates()
-    graph_obj.draw_graph()
-    mover.renderer.draw_rectangle()
+  graph_obj.translate_coordinates()
+  graph_obj.draw_graph()
+  mover.renderer.draw_rectangle()
 
-    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, time: 0, mover })
-  }, 100)
+  canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, time: 0, mover })
 }
 
 class WithMover extends Component {

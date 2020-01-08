@@ -14,7 +14,9 @@ function page_hoc(Page, animate, draw) {
     componentDidMount() {
       const canvas_el = this.canvas_el.current
       window.addEventListener('resize', () => this.draw(canvas_el, this.animate))
-      this.draw(canvas_el, this.animate)
+      setTimeout(() => {
+        this.draw(canvas_el, this.animate)
+      }, 50)
     }
 
     componentWillUnmount = () => {

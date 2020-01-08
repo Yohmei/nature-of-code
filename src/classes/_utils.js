@@ -56,3 +56,7 @@ export class Gaussian {
 export const map_range = (value, curr_min, curr_max, new_min, new_max) => {
   return new_min + ((new_max - new_min) * (value - curr_min)) / (curr_max - curr_min)
 }
+
+export const S = element => {
+  return document.querySelector(element)
+}

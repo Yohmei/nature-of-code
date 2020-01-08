@@ -24,17 +24,15 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
-    const canvas_obj = new Canvas(canvas_el)
-    const graph_obj = new Graph(canvas_obj)
+  const canvas_obj = new Canvas(canvas_el)
+  const graph_obj = new Graph(canvas_obj)
 
-    // Explore Perlin Noise http://haptic-data.com/toxiclibsjs/examples/perlin-noise-canvas
-    const perlin = new toxi.math.noise.PerlinNoise()
+  // Explore Perlin Noise http://haptic-data.com/toxiclibsjs/examples/perlin-noise-canvas
+  const perlin = new toxi.math.noise.PerlinNoise()
 
-    graph_obj.translate_coordinates()
+  graph_obj.translate_coordinates()
 
-    canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, is_draw_graph: true, perlin, time: 0 })
-  }, 100)
+  canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, is_draw_graph: true, perlin, time: 0 })
 }
 
 class PerlinNoise extends Component {

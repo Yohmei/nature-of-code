@@ -37,17 +37,15 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
-    const canvas_obj = new Canvas(canvas_el)
-    const graph_obj = new Graph(canvas_obj)
-    const location = new PVector(0, 0)
-    const velocity = new PVector(6, -8)
-    const renderer = new Renderer(canvas_obj, location)
+  const canvas_obj = new Canvas(canvas_el)
+  const graph_obj = new Graph(canvas_obj)
+  const location = new PVector(0, 0)
+  const velocity = new PVector(6, -8)
+  const renderer = new Renderer(canvas_obj, location)
 
-    graph_obj.translate_coordinates()
+  graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, renderer, location, velocity })
-  }, 100)
+  canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, renderer, location, velocity })
 }
 
 class Vectors extends Component {

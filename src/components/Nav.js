@@ -8,22 +8,31 @@ export default class Nav extends Component {
   }
 
   state = {
-    inro_pages: ['Home', 'Random Walker', 'Normal Distribution', 'Perlin Noise'],
+    intro_pages: ['Home', 'Random Walker', 'Normal Distribution', 'Perlin Noise'],
     vector_pages: ['Vectors', 'Unit Vectors', 'Mover', 'Mouse Chaiser'],
     forces_pages: ['Acceleration', 'Friction', 'Fluid Resistance', 'Gravity']
   }
 
   nav = React.createRef()
 
+  componentDidMount() {
+    /** @type {HTMLElement} */
+    const nav = this.nav.current
+
+    setTimeout(() => {
+      nav.style.setProperty('--top', '0')
+    }, 0)
+  }
+
   render() {
     const { toggle_burger } = this.props
-    const { inro_pages, vector_pages, forces_pages } = this.state
+    const { intro_pages, vector_pages, forces_pages } = this.state
 
     return (
       <nav onClick={toggle_burger} ref={this.nav}>
         <div className='intro-links'>
           <div className='head'>INTRODUCTION</div>
-          {inro_pages.map((page, index) => {
+          {intro_pages.map((page, index) => {
             const page_link = page.toLowerCase().replace(/\s/g, '-')
 
             return (

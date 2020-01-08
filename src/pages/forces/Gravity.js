@@ -34,19 +34,17 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
-    const canvas_obj = new Canvas(canvas_el)
-    const graph_obj = new Graph(canvas_obj)
-    const movers = []
+  const canvas_obj = new Canvas(canvas_el)
+  const graph_obj = new Graph(canvas_obj)
+  const movers = []
 
-    for (let i = 0; i < 1; i++) {
-      movers[i] = new Mover(canvas_obj, { mass: 10 * (i + 1), location: new PVector(random(-300, 300), -100) })
-    }
+  for (let i = 0; i < 1; i++) {
+    movers[i] = new Mover(canvas_obj, { mass: 10 * (i + 1), location: new PVector(random(-300, 300), -100) })
+  }
 
-    graph_obj.translate_coordinates()
+  graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, movers })
-  }, 200)
+  canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, movers })
 }
 
 class Gravity extends Component {

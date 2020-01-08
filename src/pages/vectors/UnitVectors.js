@@ -32,15 +32,13 @@ const animate = function(args) {
 
 // It is important to keep 'function' keyword here because I want to get reference to 'this' inside it
 const draw = function(canvas_el, animate) {
-  setTimeout(() => {
-    const canvas_obj = new Canvas(canvas_el)
-    const graph_obj = new Graph(canvas_obj)
-    const renderer = new Renderer(canvas_obj)
+  const canvas_obj = new Canvas(canvas_el)
+  const graph_obj = new Graph(canvas_obj)
+  const renderer = new Renderer(canvas_obj)
 
-    graph_obj.translate_coordinates()
+  graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, renderer })
-  }, 100)
+  canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, renderer })
 }
 
 class UnitVectors extends Component {

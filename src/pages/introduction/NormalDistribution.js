@@ -25,7 +25,6 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
     const gaussian = new Gaussian()
@@ -33,7 +32,6 @@ const draw = (canvas_el, animate) => {
     graph_obj.translate_coordinates()
 
     canvas_obj.update_no_clear({ stop_anime: false, graph_obj, animate, is_draw_graph: true, gaussian, time: 0 })
-  }, 100)
 }
 
 class NormalDistribution extends Component {

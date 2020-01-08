@@ -20,6 +20,8 @@
 }
 
 nav {
+  --top: 100%;
+
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -28,10 +30,11 @@ nav {
   background-color: $bg;
   z-index: 10;
   position: absolute;
-  top: 0;
+  top: var(--top);
   left: 0;
   right: 0;
   bottom: 0;
+  transition: top 0.3s cubic-bezier(0.075, 0.82, 0.5, 1);
 
   .intro-links {
     padding: 1rem;

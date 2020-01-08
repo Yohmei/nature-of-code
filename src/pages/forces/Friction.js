@@ -45,7 +45,6 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
     const canvas_obj = new Canvas(canvas_el)
     const graph_obj = new Graph(canvas_obj)
     const mover = new Mover(canvas_obj, { mass: 5 })
@@ -53,7 +52,6 @@ const draw = (canvas_el, animate) => {
     graph_obj.translate_coordinates()
 
     canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, mover })
-  }, 200)
 }
 
 class Friction extends Component {

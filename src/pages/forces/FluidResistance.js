@@ -45,27 +45,25 @@ const animate = args => {
 }
 
 const draw = (canvas_el, animate) => {
-  setTimeout(() => {
-    const canvas_obj = new Canvas(canvas_el)
-    const graph_obj = new Graph(canvas_obj)
-    const movers = []
-    const liquid = new Liquid(canvas_obj, {
-      x: -500,
-      y: 100,
-      height: 100,
-      width: 1000,
-      liquid_density: 1,
-      drag_coefficient: 1.5
-    })
+  const canvas_obj = new Canvas(canvas_el)
+  const graph_obj = new Graph(canvas_obj)
+  const movers = []
+  const liquid = new Liquid(canvas_obj, {
+    x: -500,
+    y: 100,
+    height: 100,
+    width: 1000,
+    liquid_density: 1,
+    drag_coefficient: 1.5
+  })
 
-    for (let i = 0; i < 3; i++) {
-      movers[i] = new Mover(canvas_obj, { mass: 10 * (i + 1), location: new PVector(random(-300, 300), -100) })
-    }
+  for (let i = 0; i < 3; i++) {
+    movers[i] = new Mover(canvas_obj, { mass: 10 * (i + 1), location: new PVector(random(-300, 300), -100) })
+  }
 
-    graph_obj.translate_coordinates()
+  graph_obj.translate_coordinates()
 
-    canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, movers, liquid })
-  }, 200)
+  canvas_obj.update({ stop_anime: false, graph_obj, animate, time: 0, movers, liquid })
 }
 
 class FluidResistance extends Component {
