@@ -2,7 +2,7 @@ import express from 'express'
 
 let app = require('./server').default
 
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 if (module.hot) {
   module.hot.accept('./server', function() {
@@ -18,12 +18,12 @@ if (module.hot) {
 
 let exp = express()
   .use((req, res) => app.handle(req, res))
-  .listen(port, function(err) {
+  .listen(PORT, function(err) {
     if (err) {
       console.error(err)
       return
     }
-    console.log(`> Started on http://localhost:${port}`)
+    console.log(`> Started on http://localhost:${PORT}`)
   })
 
 export default exp
