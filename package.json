@@ -9,7 +9,8 @@
     "start": "run-s rm-build open razzle-start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
-    "start:prod": "NODE_ENV=production node build/server.js"
+    "start:prod": "NODE_ENV=production node build/server.js",
+    "deploy": "git push https://heroku:ad80e166-3d78-4cd8-91db-06dfb1f8d8ee@git.heroku.com/nature-of-code.git HEAD --force"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
