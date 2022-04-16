@@ -57,6 +57,12 @@ export const map_range = (value, curr_min, curr_max, new_min, new_max) => {
   return new_min + ((new_max - new_min) * (value - curr_min)) / (curr_max - curr_min)
 }
 
-export const S = element => {
+export const S = (element) => {
   return document.querySelector(element)
+}
+
+export const constrain = (value, min = 5, max = 10) => {
+  if (value > min && value < max) return value
+  else if (value < min) return min
+  else if (value > max) return max
 }

@@ -1,10 +1,11 @@
+import { random } from './_utils'
 export default class Renderer {
   constructor(canvas_obj) {
     this.context = canvas_obj.context
     this.strokeStyle = '#000'
   }
 
-  draw_circle = (vector, { radius = 5 } = {}) => {
+  draw_circle = (vector, { radius = 5 } = {}, color) => {
     const { context } = this
     const x = vector.x
     const y = vector.y
@@ -14,7 +15,8 @@ export default class Renderer {
 
     context.beginPath()
     context.arc(x, y, r, start_angle, end_angle) // x and y is a center
-    context.stroke()
+    context.fillStyle = color
+    context.fill()
     context.closePath()
   }
 

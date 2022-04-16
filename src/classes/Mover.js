@@ -6,13 +6,15 @@ import Renderer from './Renderer'
 import { random, map_range } from './_utils'
 
 export default class Mover {
+  colors = ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D', '#C7F2A7']
+
   constructor(
     canvas_obj,
     {
       location = new PVector(random(-100, 100), random(-100, 100)),
       velocity = new PVector(0, 0),
       acceleration = new PVector(0, 0),
-      mass = 1
+      mass = 1,
     } = {}
   ) {
     this.perlin = new toxi.math.noise.PerlinNoise()
@@ -23,6 +25,15 @@ export default class Mover {
     this.mass = mass
     this.top_speed = 10
     this.counter = 1
+    this.color = this.rand_color()
+  }
+
+  rand_color = () => {
+    if (this.colors.length == 0) this.colors = ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D', '#C7F2A7']
+
+    const color = this.colors.splice(random(0, this.colors.length), 1)
+
+    return color[0]
   }
 
   apply_force = ({ force = new PVector(1, 0) } = {}) => {
@@ -32,7 +43,7 @@ export default class Mover {
     this.acceleration.add(acceleration)
   }
 
-  apply_water_resistance = liquid => {
+  apply_water_resistance = (liquid) => {
     if (
       this.location.x > liquid.x &&
       this.location.x < liquid.x + liquid.width &&
@@ -49,6 +60,13 @@ export default class Mover {
   }
 
   update_with_water = () => {
+    this.velocity.add(this.acceleration)
+    this.location.add(this.velocity)
+    // reset acceleration each frame update since it is constant
+    this.acceleration.multiply_scalar(0)
+  }
+
+  update_with_gravity = () => {
     this.velocity.add(this.acceleration)
     this.location.add(this.velocity)
     // reset acceleration each frame update since it is constant
@@ -81,7 +99,7 @@ export default class Mover {
     this.counter++
   }
 
-  update_with_mouse = mouse => {
+  update_with_mouse = (mouse) => {
     const dir = PVector.subtract_return_new(mouse, this.location)
 
     this.acceleration = dir.unit_vector().multiply_scalar(0.5) // the acceleration is constant = 0.5. look above
@@ -91,7 +109,7 @@ export default class Mover {
   }
 
   display = () => {
-    this.renderer.draw_circle(this.location, { radius: this.mass })
+    this.renderer.draw_circle(this.location, { radius: this.mass }, this.color)
   }
 
   check_edges = ({ right_edge = 100, left_edge = -100, bottom_edge = 100, top_edge = -100 } = {}) => {
