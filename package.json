@@ -2,6 +2,13 @@
   "name": "nature-of-code",
   "version": "0.1.0",
   "license": "MIT",
+  "browserslist": [
+    "last 2 versions",
+    "> 1%"
+  ],
+  "engines": {
+    "node": "14.16.1"
+  },
   "scripts": {
     "open": "start http://localhost:3000",
     "rm-build": "rm -rf build",
